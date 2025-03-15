@@ -962,7 +962,7 @@ export default function Home() {
           ref={homeRef}
           className="relative bg-primary min-h-screen flex items-center"
         >
-          <div className="absolute inset-0 bg-[url('/hero-bg.png')] bg-cover bg-center opacity-20" />
+          <div className="absolute inset-0 bg-[url('/hero-bg.png')] bg-cover bg-center opacity-55" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(9,184,128,0.2),transparent_60%)]" />
           <div className="container relative mx-auto px-4 py-20 md:py-32 text-center">
             <div className="mx-auto max-w-4xl">
