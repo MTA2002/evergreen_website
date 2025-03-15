@@ -948,7 +948,7 @@ export default function Home() {
           </div>
 
           <Button
-            className="hidden md:flex bg-accent hover:bg-accent/80 text-primary font-medium px-6 py-2.5 text-base transition-colors rounded-md"
+            className="hidden md:flex bg-accent hover:bg-accent/80 text-white font-medium px-6 py-2.5 text-base transition-colors rounded-md"
             onClick={() => scrollToSection(contactRef)}
           >
             Get in Touch
@@ -978,7 +978,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Button
                   size="lg"
-                  className="bg-accent hover:bg-accent/80 text-primary font-medium px-8 py-3 text-base md:text-lg rounded-md transition-all duration-300 shadow-lg hover:shadow-accent/30 hover:-translate-y-1"
+                  className="bg-accent hover:bg-accent/80 text-white font-medium px-8 py-3 text-base md:text-lg rounded-md transition-all duration-300 shadow-lg hover:shadow-accent/30 hover:-translate-y-1"
                   onClick={() => scrollToSection(contactRef)}
                 >
                   Work With Us
@@ -1420,7 +1420,7 @@ export default function Home() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-accent hover:bg-accent/80 text-primary font-medium py-3 text-base transition-colors h-12 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-accent hover:bg-accent/80 text-white font-medium py-3 text-base transition-colors h-12 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
