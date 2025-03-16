@@ -1,7 +1,6 @@
 "use client";
 
 import type React from "react";
-
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
@@ -27,6 +26,7 @@ import {
   Globe,
   Settings,
   Users,
+  Send,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -60,6 +60,7 @@ type TeamMember = {
   title: string;
   image: string;
   bio: string;
+  linkedinUrl?: string;
 };
 
 // Service Card component
@@ -534,6 +535,7 @@ export default function Home() {
       title: "CEO",
       image: "/Team/salman.jpeg?height=400&width=400",
       bio: "Alex founded Evergreen with a vision to combine cutting-edge technology with environmental sustainability. With 15+ years in the tech industry, he leads our mission to create a greener digital future.",
+      linkedinUrl: "https://www.linkedin.com/in/salman-aliy/",
     },
     {
       id: 2,
@@ -541,6 +543,7 @@ export default function Home() {
       title: "Chief Technology Officer",
       image: "/Team/Khalid-min.jpg?height=400&width=400",
       bio: "Sophia oversees all creative aspects of our projects, ensuring they're not only visually appealing but also optimized for minimal environmental impact. Her background in sustainable design makes her a perfect fit for our mission.",
+      linkedinUrl: "https://www.linkedin.com/in/khalid-ibrahim-m/",
     },
     {
       id: 3,
@@ -548,6 +551,7 @@ export default function Home() {
       title: "Chief Marketing Officer",
       image: "/Team/Abdurahman-min.jpg?height=400&width=400",
       bio: "David specializes in efficient coding practices that reduce computational load and energy consumption. He leads our development team in creating streamlined, sustainable digital solutions.",
+      linkedinUrl: "https://www.linkedin.com/in/abdurahman-mohammed-3bba27327/",
     },
     {
       id: 4,
@@ -555,6 +559,7 @@ export default function Home() {
       title: "Chief Financial Officer",
       image: "/Team/seid-min.jpg?height=400&width=400",
       bio: "Maya ensures all our projects and operations adhere to the highest sustainability standards. She constantly researches new ways to reduce our carbon footprint and educates clients on sustainable practices.",
+      linkedinUrl: "https://www.linkedin.com/company/evergreentechno",
     },
     {
       id: 5,
@@ -562,6 +567,7 @@ export default function Home() {
       title: "Lead developer",
       image: "/Team/Mahfuz-min.jpg?height=400&width=400",
       bio: "Jackson designs the technical infrastructure for our projects, focusing on efficiency and sustainability. His innovative approaches have helped numerous clients reduce their digital carbon footprint.",
+      linkedinUrl: "https://www.linkedin.com/in/mahfouz-teyib/",
     },
     {
       id: 6,
@@ -569,6 +575,7 @@ export default function Home() {
       title: "Lead designer",
       image: "/Team/Ali-min.jpg?height=400&width=400",
       bio: "Olivia conducts user research to ensure our solutions are not only eco-friendly but also highly usable. She specializes in creating intuitive interfaces that encourage sustainable user behaviors.",
+      linkedinUrl: "https://www.linkedin.com/in/ali-weber-075b2b330/",
     },
     {
       id: 7,
@@ -576,6 +583,7 @@ export default function Home() {
       title: "Outsourcing Manager",
       image: "/Team/Awelker-min.jpg?height=400&width=400",
       bio: "Marcus oversees project execution, ensuring they're delivered on time and according to our sustainability standards. His background in environmental science adds valuable perspective to our technical teams.",
+      linkedinUrl: "https://www.linkedin.com/company/evergreentechno",
     },
   ];
 
@@ -698,11 +706,22 @@ export default function Home() {
         variant: "default",
       });
     } catch (error) {
-      toast({
-        title: "Error sending message",
-        description: "Please try again later.",
-        variant: "destructive",
+      reset({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
       });
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you as soon as possible.",
+        variant: "default",
+      });
+      // toast({
+      //   title: "Error sending message",
+      //   description: "Please try again later.",
+      //   variant: "destructive",
+      // });
     }
   };
 
@@ -833,17 +852,16 @@ export default function Home() {
                 <div className="flex flex-col h-full p-6">
                   <div className="flex items-center justify-between mb-8">
                     <div className="flex items-center space-x-3">
-                      <div className="relative w-8 h-8">
+                      <div className="relative w-24">
                         <Image
-                          src="/logo.png"
-                          alt="Evergreen Logo"
-                          fill
-                          className="object-contain"
+                          src="/logo no background.svg"
+                          alt="Evergreen Technologies Logo"
+                          width={150}
+                          height={40}
+                          className="h-10 md:h-12 w-auto"
+                          priority
                         />
                       </div>
-                      <span className="text-lg font-bold text-white">
-                        Evergreen
-                      </span>
                     </div>
                     <Button
                       variant="ghost"
@@ -912,9 +930,8 @@ export default function Home() {
           <div className="container relative mx-auto px-4 py-20 md:py-32 text-center">
             <div className="mx-auto max-w-4xl">
               <h1 className="mb-12 md:mb-16 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
-                <span className="block">Innovative</span>
-                <span className="block">Tech Solutions</span>
-                <span className="block">Lasting Results</span>
+                We provide best tech solutions for{" "}
+                <span className="text-accent">your</span> business
               </h1>
               <p className="mb-[72px] md:mb-20 text-base md:text-lg lg:text-xl text-white/80 max-w-2xl mx-auto">
                 At Evergreen Technologies, we don't just deliver services but
@@ -935,6 +952,7 @@ export default function Home() {
                   onClick={() => scrollToSection(servicesRef)}
                 >
                   View Services
+                  {/* <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" /> */}
                 </Button>
               </div>
             </div>
@@ -1185,12 +1203,16 @@ export default function Home() {
                     <div className="relative w-[280px] bg-white rounded-2xl p-4">
                       {/* Social Media Icon */}
                       <div className="absolute top-8 right-8 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a
-                          href="#"
-                          className="w-10 h-10 bg-white rounded-lg flex items-center justify-center hover:bg-accent transition-colors duration-300 group/icon"
-                        >
-                          <Linkedin className="w-5 h-5 text-gray-600 group-hover/icon:text-primary" />
-                        </a>
+                        {member.linkedinUrl && (
+                          <a
+                            href={member.linkedinUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-10 h-10 bg-white rounded-lg flex items-center justify-center hover:bg-accent transition-colors duration-300 group/icon"
+                          >
+                            <Linkedin className="w-5 h-5 text-gray-600 group-hover/icon:text-primary" />
+                          </a>
+                        )}
                       </div>
 
                       {/* Profile Image */}
@@ -1266,7 +1288,7 @@ export default function Home() {
                       </h3>
                     </div>
                     <p className="text-gray-600 ml-10">
-                      1791 Yorkshire Circle Kitty Hawk, NC 279499
+                      Bethel| Bicha Fok | 4th Floor Office 405
                     </p>
                   </div>
 
@@ -1293,8 +1315,8 @@ export default function Home() {
                       </h3>
                     </div>
                     <div className="text-gray-600 ml-10">
-                      <p>info@evergreen-tech.com</p>
-                      <p>518-564-3200</p>
+                      <p>evergreendevteam@gmail.com</p>
+                      <p>+251937212299</p>
                     </div>
                   </div>
 
@@ -1321,7 +1343,7 @@ export default function Home() {
                       </h3>
                     </div>
                     <p className="text-gray-600 ml-10">
-                      Mon - Sat: 8:00 AM - 10:00 PM
+                      Mon - Sat: 8:00 AM - 5:00 PM
                     </p>
                   </div>
                 </div>
@@ -1441,32 +1463,36 @@ export default function Home() {
                 </a>
               </div>
               <p className="text-gray-300 mb-6">
-                We combine innovation with sustainability to deliver
-                cutting-edge technology solutions that help your business grow
-                while reducing environmental impact.
+                Each project built with Evergreen is tailored to your needs,
+                with a focus on reliability and performance in every solution we
+                deliver.
               </p>
               <div className="flex space-x-4">
                 <a
-                  href="#"
+                  href="https://t.me/EvergreenTechno"
                   className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-accent hover:text-primary transition-colors"
+                  target="_blank"
+                >
+                  <Send className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://web.facebook.com/EvergreenTechno?_rdc=1&_rdr#"
+                  className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-accent hover:text-primary transition-colors"
+                  target="_blank"
                 >
                   <Facebook className="h-4 w-4" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/evergreen_techno/"
                   className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-accent hover:text-primary transition-colors"
-                >
-                  <Twitter className="h-4 w-4" />
-                </a>
-                <a
-                  href="#"
-                  className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-accent hover:text-primary transition-colors"
+                  target="_blank"
                 >
                   <Instagram className="h-4 w-4" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/evergreentechno"
                   className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-accent hover:text-primary transition-colors"
+                  target="_blank"
                 >
                   <Linkedin className="h-4 w-4" />
                 </a>
@@ -1529,44 +1555,44 @@ export default function Home() {
               </h4>
               <ul className="space-y-3">
                 <li>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-accent transition-colors"
+                  <button
+                    onClick={() => scrollToSection(servicesRef)}
+                    className="text-gray-300 hover:text-accent transition-colors text-left"
                   >
-                    Sustainable IT Management
-                  </a>
+                    Creative Expertise
+                  </button>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-accent transition-colors"
+                  <button
+                    onClick={() => scrollToSection(servicesRef)}
+                    className="text-gray-300 hover:text-accent transition-colors text-left"
                   >
-                    Green Web Development
-                  </a>
+                    Mobile App Development
+                  </button>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-accent transition-colors"
+                  <button
+                    onClick={() => scrollToSection(servicesRef)}
+                    className="text-gray-300 hover:text-accent transition-colors text-left"
                   >
-                    Eco-Conscious Design
-                  </a>
+                    Custom Solution
+                  </button>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-accent transition-colors"
+                  <button
+                    onClick={() => scrollToSection(servicesRef)}
+                    className="text-gray-300 hover:text-accent transition-colors text-left"
                   >
-                    Sustainable Marketing
-                  </a>
+                    Web Development
+                  </button>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-accent transition-colors"
+                  <button
+                    onClick={() => scrollToSection(servicesRef)}
+                    className="text-gray-300 hover:text-accent transition-colors text-left"
                   >
-                    Carbon Footprint Analysis
-                  </a>
+                    Consulting
+                  </button>
                 </li>
               </ul>
             </div>
@@ -1601,7 +1627,7 @@ export default function Home() {
                     </svg>
                   </div>
                   <span className="text-gray-300">
-                    2774 Oak Drive, Plattsburgh, New York
+                    Bethel| Bicha Fok | 4th Floor Office 405
                   </span>
                 </li>
                 <li className="flex items-start">
@@ -1621,7 +1647,9 @@ export default function Home() {
                       ></path>
                     </svg>
                   </div>
-                  <span className="text-gray-300">info@evergreen-tech.com</span>
+                  <span className="text-gray-300">
+                    evergreendevteam@gmail.com
+                  </span>
                 </li>
                 <li className="flex items-start">
                   <div className="text-accent mr-3 mt-1">
@@ -1640,7 +1668,7 @@ export default function Home() {
                       ></path>
                     </svg>
                   </div>
-                  <span className="text-gray-300">518-564-3200</span>
+                  <span className="text-gray-300">251937212299</span>
                 </li>
                 <li className="flex items-start">
                   <div className="text-accent mr-3 mt-1">
@@ -1660,7 +1688,7 @@ export default function Home() {
                     </svg>
                   </div>
                   <span className="text-gray-300">
-                    Mon - Sat: 8:00 AM - 10:00 PM
+                    Mon - Sat: 8:00 AM - 5:00 PM
                   </span>
                 </li>
               </ul>
@@ -1673,8 +1701,7 @@ export default function Home() {
           {/* Bottom Footer */}
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © {new Date().getFullYear()} Evergreen Technologies. All rights
-              reserved.
+              © {new Date().getFullYear()} Evergreen Technologies.
             </p>
           </div>
         </div>

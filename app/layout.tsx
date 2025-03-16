@@ -11,9 +11,12 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Evergreen Technologies - Sustainable Tech Solutions",
-  description: "We provide sustainable tech solutions for a greener future",
-  generator: "v0.dev",
+  title: "Evergreen Technologies",
+  description:
+    "We partner with you to create transformative digital experiences. Our expert team offers creative designs, custom solutions, and end-to-end support.",
+  icons: {
+    icon: "/icon.ico",
+  },
 };
 
 export default function RootLayout({
