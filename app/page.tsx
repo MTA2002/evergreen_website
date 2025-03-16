@@ -23,6 +23,10 @@ import {
   Instagram,
   Linkedin,
   Loader2,
+  Smartphone,
+  Globe,
+  Settings,
+  Users,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -161,7 +165,7 @@ const ProjectCard = ({
   </Card>
 );
 
-// Project Detail Modal component
+// Project Detail Modal component - updated
 const ProjectDetailModal = ({
   project,
   isOpen,
@@ -192,8 +196,8 @@ const ProjectDetailModal = ({
         onClick={onClose}
       ></div>
 
-      {/* Modal container with animation */}
-      <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] relative z-10 flex flex-col translate-y-0 scale-100 transition-all duration-500">
+      {/* Modal container with animation - Added rounded-xl to all corners */}
+      <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] relative z-10 flex flex-col translate-y-0 scale-100 transition-all duration-500 overflow-hidden">
         {/* Close button */}
         <button
           onClick={onClose}
@@ -203,7 +207,7 @@ const ProjectDetailModal = ({
           <X className="h-5 w-5 text-primary" />
         </button>
 
-        {/* Project image with overlay gradient - Fixed header */}
+        {/* Project image with overlay gradient - Fixed header with rounded corners */}
         <div className="relative w-full h-72 md:h-96 flex-shrink-0">
           <Image
             src={project.image || "/placeholder.svg"}
@@ -237,103 +241,21 @@ const ProjectDetailModal = ({
             </p>
           </div>
 
-          {/* Project details in grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            {/* Technologies */}
-            <div>
-              <h3 className="text-lg font-semibold text-primary mb-3">
-                Technologies Used
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1.5 bg-gray-100 hover:bg-accent/10 text-gray-800 rounded-full text-sm transition-colors duration-300"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+          {/* Technologies */}
+          <div>
+            <h3 className="text-lg font-semibold text-primary mb-3">
+              Technologies Used
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {project.technologies.map((tech, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1.5 bg-gray-100 hover:bg-accent/10 text-gray-800 rounded-full text-sm transition-colors duration-300"
+                >
+                  {tech}
+                </span>
+              ))}
             </div>
-
-            {/* Project details */}
-            <div>
-              <h3 className="text-lg font-semibold text-primary mb-3">
-                Project Details
-              </h3>
-              <ul className="space-y-2">
-                <li className="flex items-start">
-                  <div className="text-accent mr-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                      <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
-                    </svg>
-                  </div>
-                  <span className="text-gray-700">
-                    Optimized for minimal energy consumption
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <div className="text-accent mr-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                      <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
-                    </svg>
-                  </div>
-                  <span className="text-gray-700">
-                    Reduced carbon footprint
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <div className="text-accent mr-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                      <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
-                    </svg>
-                  </div>
-                  <span className="text-gray-700">
-                    Efficient code practices
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Call to action buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href={project.deploymentUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-accent hover:bg-accent/80 text-primary font-medium px-6 py-3 rounded-md transition-colors shadow-md hover:shadow-lg"
-            >
-              View Live Project
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
-            <button
-              onClick={onClose}
-              className="inline-flex items-center justify-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium px-6 py-3 rounded-md transition-colors"
-            >
-              Close
-            </button>
           </div>
         </div>
       </div>
@@ -521,63 +443,86 @@ export default function Home() {
   const projects: Project[] = [
     {
       id: 1,
-      title: "Eco-Friendly E-commerce Platform",
-      category: "Web Development",
+      title: "E-mezgeb",
+      category: "Web Application",
       description:
-        "A sustainable e-commerce platform built with Next.js and optimized for minimal energy consumption. The site uses efficient code practices, lazy loading, and optimized images to reduce server load and carbon footprint.",
-      image: "/placeholder.svg?height=600&width=800",
-      deploymentUrl: "https://eco-commerce.example.com",
-      technologies: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+        "An in-house inventory management system developed for Ethiopian enterprises, offering real-time inventory tracking, financial oversight, and multi-branch management with customizable reports for data-driven decisions.",
+      image: "/11.png?height=600&width=800",
+      deploymentUrl: "https://e-mezgeb.example.com",
+      technologies: ["Vue.js", "Laravel", "MySQL", "Ant Vue"],
     },
     {
       id: 2,
-      title: "Green Energy Dashboard",
-      category: "Data Visualization",
+      title: "Terhim Delivery",
+      category: "Mobile App",
       description:
-        "An interactive dashboard for monitoring renewable energy usage across different regions. Features real-time data visualization and predictive analytics to help businesses track and optimize their energy consumption.",
-      image: "/placeholder.svg?height=600&width=800",
-      deploymentUrl: "https://energy-dashboard.example.com",
-      technologies: ["React", "D3.js", "Node.js", "MongoDB"],
+        "A cross-platform delivery app for both end users and drivers, complete with an admin dashboard.",
+      image: "/13.png?height=600&width=800",
+      deploymentUrl: "https://terhim-delivery.example.com",
+      technologies: [
+        "React.js",
+        "Flutter",
+        "NestJS",
+        "Docker",
+        "Redis",
+        "PostgreSQL",
+        "Google Maps",
+      ],
     },
     {
       id: 3,
-      title: "Sustainable Travel App",
-      category: "Mobile App",
+      title: "RentEase",
+      category: "Web Application",
       description:
-        "A mobile application that helps users find eco-friendly travel options and calculate their carbon footprint. The app provides suggestions for reducing environmental impact while traveling.",
-      image: "/placeholder.svg?height=600&width=800",
-      deploymentUrl: "https://travel-green.example.com",
-      technologies: ["React Native", "Firebase", "Google Maps API"],
+        "A property rental platform with real-time booking, payment integration, and user reviews.",
+      image: "/16.png?height=600&width=800",
+      deploymentUrl: "https://rentease.example.com",
+      technologies: ["Next.js", "Node.js", "PostgreSQL", "AWS", "Nest.js"],
     },
     {
       id: 4,
-      title: "Carbon Footprint Calculator",
-      category: "Web Application",
+      title: "Shega Cars",
+      category: "Website",
       description:
-        "An intuitive web application that allows businesses to calculate and track their carbon emissions. Includes detailed reporting features and suggestions for reducing environmental impact.",
-      image: "/placeholder.svg?height=600&width=800",
-      deploymentUrl: "https://carbon-calc.example.com",
-      technologies: ["Vue.js", "Express", "PostgreSQL", "Chart.js"],
+        "A car dealership platform featuring inventory management, AI-driven recommendations, a blog, and user portals.",
+      image: "/15.png?height=600&width=800",
+      deploymentUrl: "https://shega.example.com",
+      technologies: [
+        "React.js",
+        "Tailwind CSS",
+        "Node.js",
+        "PostgreSQL",
+        "Docker",
+        "Supabase",
+      ],
     },
     {
       id: 5,
-      title: "Smart Waste Management System",
-      category: "IoT Solution",
+      title: "Gazi",
+      category: "Website",
       description:
-        "An IoT-based solution for optimizing waste collection and recycling processes. The system uses sensors to monitor waste levels and optimize collection routes for maximum efficiency.",
-      image: "/placeholder.svg?height=600&width=800",
-      deploymentUrl: "https://smart-waste.example.com",
-      technologies: ["IoT", "Python", "TensorFlow", "AWS"],
+        "Gazi is an Ethiopian exporter of high-quality agricultural products, with a corporate website featuring dynamic content management and analytics.",
+      image: "/14.png?height=600&width=800",
+      deploymentUrl: "https://gazi.example.com",
+      technologies: ["Next.js", "Tailwind CSS", "Strapi CMS"],
     },
     {
       id: 6,
-      title: "Green Office Analytics Platform",
-      category: "Business Intelligence",
-      description:
-        "A comprehensive platform that helps businesses analyze and reduce their environmental impact in office settings. Features include energy usage tracking, paper consumption analytics, and sustainability recommendations.",
-      image: "/placeholder.svg?height=600&width=800",
-      deploymentUrl: "https://green-office.example.com",
-      technologies: ["Angular", "Django", "PostgreSQL", "Docker"],
+      title: "DarulKubra",
+      category: "Mobile App",
+      description: "DarulKubra is a mobile app for learning Arabic. ",
+      image: "/12.png?height=600&width=800",
+      deploymentUrl: "https://darulkubra.example.com",
+      technologies: [
+        "Flutter",
+        "Next.js",
+        "Vanilla JS",
+        "Tailwind CSS",
+        "PostgreSQL",
+        "Express.js",
+        "Laravel",
+        "MySQL",
+      ],
     },
   ];
 
@@ -585,51 +530,51 @@ export default function Home() {
   const teamMembers: TeamMember[] = [
     {
       id: 1,
-      name: "Alexander Cameron",
-      title: "CEO & Founder",
-      image: "/placeholder.svg?height=400&width=400",
+      name: "Salman Ali",
+      title: "CEO",
+      image: "/Team/salman.jpeg?height=400&width=400",
       bio: "Alex founded Evergreen with a vision to combine cutting-edge technology with environmental sustainability. With 15+ years in the tech industry, he leads our mission to create a greener digital future.",
     },
     {
       id: 2,
-      name: "Sophia Rodriguez",
-      title: "Creative Director",
-      image: "/placeholder.svg?height=400&width=400",
+      name: "Khalid Ibrahim",
+      title: "Chief Technology Officer",
+      image: "/Team/Khalid-min.jpg?height=400&width=400",
       bio: "Sophia oversees all creative aspects of our projects, ensuring they're not only visually appealing but also optimized for minimal environmental impact. Her background in sustainable design makes her a perfect fit for our mission.",
     },
     {
       id: 3,
-      name: "David Chen",
-      title: "Lead Developer",
-      image: "/placeholder.svg?height=400&width=400",
+      name: "Abdurahman M",
+      title: "Chief Marketing Officer",
+      image: "/Team/Abdurahman-min.jpg?height=400&width=400",
       bio: "David specializes in efficient coding practices that reduce computational load and energy consumption. He leads our development team in creating streamlined, sustainable digital solutions.",
     },
     {
       id: 4,
-      name: "Maya Patel",
-      title: "Sustainability Officer",
-      image: "/placeholder.svg?height=400&width=400",
+      name: "Seid Mubarek",
+      title: "Chief Financial Officer",
+      image: "/Team/seid-min.jpg?height=400&width=400",
       bio: "Maya ensures all our projects and operations adhere to the highest sustainability standards. She constantly researches new ways to reduce our carbon footprint and educates clients on sustainable practices.",
     },
     {
       id: 5,
-      name: "Jackson Williams",
-      title: "Technical Architect",
-      image: "/placeholder.svg?height=400&width=400",
+      name: "Mahfouz Teyib",
+      title: "Lead developer",
+      image: "/Team/Mahfuz-min.jpg?height=400&width=400",
       bio: "Jackson designs the technical infrastructure for our projects, focusing on efficiency and sustainability. His innovative approaches have helped numerous clients reduce their digital carbon footprint.",
     },
     {
       id: 6,
-      name: "Olivia Kim",
-      title: "UX Research Lead",
-      image: "/placeholder.svg?height=400&width=400",
+      name: "Ali Salahadin",
+      title: "Lead designer",
+      image: "/Team/Ali-min.jpg?height=400&width=400",
       bio: "Olivia conducts user research to ensure our solutions are not only eco-friendly but also highly usable. She specializes in creating intuitive interfaces that encourage sustainable user behaviors.",
     },
     {
       id: 7,
-      name: "Marcus Johnson",
-      title: "Project Manager",
-      image: "/placeholder.svg?height=400&width=400",
+      name: "Awol Ibrahim",
+      title: "Outsourcing Manager",
+      image: "/Team/Awelker-min.jpg?height=400&width=400",
       bio: "Marcus oversees project execution, ensuring they're delivered on time and according to our sustainability standards. His background in environmental science adds valuable perspective to our technical teams.",
     },
   ];
@@ -827,18 +772,18 @@ export default function Home() {
             onClick={() => scrollToSection(homeRef)}
             className="flex items-center space-x-3 group"
           >
-            <div className="relative w-8 h-8 md:w-10 md:h-10">
-              <Image
-                src="/logo.png"
-                alt="Evergreen Logo"
-                fill
-                className="object-contain transition-transform duration-300 group-hover:scale-110"
-                priority
-              />
+            <div className="flex items-center">
+              <a href="#" className="flex items-center">
+                <Image
+                  src="/logo no background.svg"
+                  alt="Evergreen Technologies Logo"
+                  width={150}
+                  height={40}
+                  className="h-10 md:h-12 w-auto"
+                  priority
+                />
+              </a>
             </div>
-            <span className="text-lg md:text-xl font-bold text-white">
-              Evergreen
-            </span>
           </button>
 
           {/* Desktop Navigation */}
@@ -962,23 +907,23 @@ export default function Home() {
           ref={homeRef}
           className="relative bg-primary min-h-screen flex items-center"
         >
-          <div className="absolute inset-0 bg-[url('/hero-bg.png')] bg-cover bg-center opacity-55" />
+          <div className="absolute inset-0 bg-[url('/hero-bg.png')] bg-cover bg-center " />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(9,184,128,0.2),transparent_60%)]" />
           <div className="container relative mx-auto px-4 py-20 md:py-32 text-center">
             <div className="mx-auto max-w-4xl">
-              <h1 className="mb-6 md:mb-8 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
-                Sustainable tech solutions for a{" "}
-                <span className="text-accent">greener</span> future
+              <h1 className="mb-12 md:mb-16 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
+                <span className="block">Innovative</span>
+                <span className="block">Tech Solutions</span>
+                <span className="block">Lasting Results</span>
               </h1>
-              <p className="mb-8 md:mb-10 text-base md:text-lg lg:text-xl text-white/80 max-w-2xl mx-auto">
-                We combine innovation with sustainability to deliver
-                cutting-edge technology solutions that help your business grow
-                while reducing environmental impact.
+              <p className="mb-[72px] md:mb-20 text-base md:text-lg lg:text-xl text-white/80 max-w-2xl mx-auto">
+                At Evergreen Technologies, we don't just deliver services but
+                partner with you to create digital tools that work.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Button
                   size="lg"
-                  className="bg-accent hover:bg-accent/80 text-white font-medium px-8 py-3 text-base md:text-lg rounded-md transition-all duration-300 shadow-lg hover:shadow-accent/30 hover:-translate-y-1"
+                  className="bg-accent hover:bg-accent/80 text-white font-medium px-8 py-3 text-base md:text-lg rounded-md transition-all duration-300 shadow-lg hover:shadow-accent/30 hover:-translate-y-1 max-w-[200px] mx-auto sm:max-w-none sm:mx-0"
                   onClick={() => scrollToSection(contactRef)}
                 >
                   Work With Us
@@ -986,11 +931,10 @@ export default function Home() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-white border-0 text-primary hover:bg-white/90 px-8 py-3 text-base md:text-lg rounded-md transition-all duration-300 shadow-lg hover:shadow-white/30 hover:-translate-y-1 group"
+                  className="bg-white border-0 text-primary hover:bg-white/90 px-8 py-3 text-base md:text-lg rounded-md transition-all duration-300 shadow-lg hover:shadow-white/30 hover:-translate-y-1 group hidden sm:inline-flex"
                   onClick={() => scrollToSection(servicesRef)}
                 >
                   View Services
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
               </div>
             </div>
@@ -1002,7 +946,7 @@ export default function Home() {
           <div className="container px-4">
             <div className="text-center mb-14">
               <div className="inline-block px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">
-                OUR SERVICES
+                WHAT WE OFFER
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
                 Our services to help your business grow
@@ -1013,16 +957,49 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Services Grid - With improved spacing and layout */}
+            {/* Services Grid - Updated with new content */}
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {services.map((service) => (
-                <ServiceCard
-                  key={service.id}
-                  icon={service.icon}
-                  title={service.title}
-                  description={service.description}
-                />
-              ))}
+              {/* Creative Expertise */}
+              <ServiceCard
+                icon={<Palette className="h-6 w-6" />}
+                title="Creative Expertise"
+                description="Unique designs tailored to your brand, captivating users with innovative visuals."
+              />
+
+              {/* Mobile App Development */}
+              <ServiceCard
+                icon={<Smartphone className="h-6 w-6" />}
+                title="Mobile App Development"
+                description="Building intuitive mobile apps for iOS and Android with engaging designs."
+              />
+
+              {/* Custom Solution */}
+              <ServiceCard
+                icon={<Code className="h-6 w-6" />}
+                title="Custom Solution"
+                description="Bespoke software tailored to your needs, enhancing functionality and user experience."
+              />
+
+              {/* Web Development */}
+              <ServiceCard
+                icon={<Globe className="h-6 w-6" />}
+                title="Web Development"
+                description="Crafting scalable websites with seamless user experiences and modern technologies."
+              />
+
+              {/* Custom System */}
+              <ServiceCard
+                icon={<Settings className="h-6 w-6" />}
+                title="Custom System"
+                description="Fully integrated custom systems designed to streamline your business operations."
+              />
+
+              {/* Consulting */}
+              <ServiceCard
+                icon={<Users className="h-6 w-6" />}
+                title="Consulting"
+                description="Strategic guidance to modernize your processes and drive digital innovation."
+              />
             </div>
           </div>
         </section>
@@ -1048,12 +1025,12 @@ export default function Home() {
                   <Image
                     src="/illustration1.svg?text=Planning&width=280&height=200"
                     alt="Initiation & Planning"
-                    width={220}
+                    width={202}
                     height={200}
                     className="rounded-lg"
                   />
                 </div>
-                <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl mb-6">
+                <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl mb-6">
                   01
                 </div>
                 <div className="text-center">
@@ -1073,12 +1050,12 @@ export default function Home() {
                   <Image
                     src="/illustration2.svg?text=Planning&width=280&height=200"
                     alt="Execution & Development"
-                    width={240}
+                    width={224}
                     height={200}
                     className="rounded-lg"
                   />
                 </div>
-                <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl mb-6">
+                <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl mb-6">
                   02
                 </div>
                 <div className="text-center">
@@ -1103,7 +1080,7 @@ export default function Home() {
                     className="rounded-lg"
                   />
                 </div>
-                <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl mb-6">
+                <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl mb-6">
                   03
                 </div>
                 <div className="text-center">
@@ -1165,7 +1142,7 @@ export default function Home() {
                 className="py-8 [--duration:40s] [--gap:2rem]"
                 pauseOnHover={true}
               >
-                {[1, 2, 3, 4, 5, 6, 8].map((index) => (
+                {[1, 2, 3, 4, 5, 6].map((index) => (
                   <div key={index} className="mx-8">
                     <div className="relative w-[180px] h-[80px] grayscale hover:grayscale-0 transition-all duration-300">
                       <Image
@@ -1193,7 +1170,7 @@ export default function Home() {
                 OUR TEAM
               </div>
               <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">
-                Meet our eco-tech experts
+                Meet our team of experts
               </h2>
               <div className="w-20 h-1 bg-accent mx-auto mt-6"></div>
             </div>
@@ -1451,21 +1428,17 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {/* Company Info */}
             <div>
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="relative w-10 h-10">
+              <div className="flex items-center">
+                <a href="#" className="flex items-center">
                   <Image
-                    src="/logo.png"
-                    alt="Evergreen Logo"
-                    fill
-                    className="object-contain"
+                    src="/logo no background.svg"
+                    alt="Evergreen Technologies Logo"
+                    width={50}
+                    height={15}
+                    className="h-10 mb-8 md:h-12 w-auto"
+                    priority
                   />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-lg font-bold text-white">
-                    Evergreen
-                  </span>
-                  <span className="text-xs text-accent">Technologies</span>
-                </div>
+                </a>
               </div>
               <p className="text-gray-300 mb-6">
                 We combine innovation with sustainability to deliver
@@ -1703,26 +1676,6 @@ export default function Home() {
               © {new Date().getFullYear()} Evergreen Technologies. All rights
               reserved.
             </p>
-            <div className="flex space-x-6">
-              <a
-                href="#"
-                className="text-gray-400 hover:text-accent text-sm transition-colors"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-accent text-sm transition-colors"
-              >
-                Terms of Service
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-accent text-sm transition-colors"
-              >
-                Cookie Policy
-              </a>
-            </div>
           </div>
         </div>
       </footer>
