@@ -930,7 +930,7 @@ export default function Home() {
           <div className="container relative mx-auto px-4 py-20 md:py-32 text-center">
             <div className="mx-auto max-w-4xl">
               <h1 className="mb-12 md:mb-16 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
-                We provide powerfull tech solutions for{" "}
+                We provide powerful tech solutions for{" "}
                 <span className="text-accent">your</span> business
               </h1>
               <p className="mb-[72px] md:mb-20 text-base md:text-lg lg:text-xl text-white/80 max-w-2xl mx-auto">
